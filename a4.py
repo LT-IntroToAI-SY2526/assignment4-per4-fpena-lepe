@@ -10,8 +10,33 @@ class TTTBoard:
             represent moves by player 'O' and '*'s are spots no one has yet played on
     """
 
-    pass
-
+    def __init__(self):
+        self.board = ['*'] * 9
+    def __str__(self):
+        return "* * *\n* * *\n* * *"
+    def make_move(self, player, pos) -> bool:
+        if pos>=0 and pos<=8:
+            if self.board[pos] == "*":
+                self.board[pos]=player
+                return True
+            print ("Try again you cant do that")
+            return False
+        print ("Try again you gotta do a number 0-8")
+        return False 
+    def has_won(self, player):
+        wincombo= [(0,1,2),(3,4,5),(6,7,8),
+                   (0,3,6),(1,4,7),(2,5,8),
+                   (0,4,8),(2,4,6)]
+        for a, b, c in wincombo:
+            if self.board[a]==self.board[b]==self.board[c]==player:
+                return True
+        return False
+    def game_over(self) -> bool:
+        if self.has_won('X') or self.has_won('O') or '*' not in self.board:
+            return True
+        return False
+    def clear(self):
+        self.board = ['*'] * 9
 
 def play_tic_tac_toe() -> None:
     """Uses your class to play TicTacToe"""
@@ -90,3 +115,4 @@ if __name__ == "__main__":
 
     # uncomment to play!
     # play_tic_tac_toe()
+    play_tic_tac_toe()
