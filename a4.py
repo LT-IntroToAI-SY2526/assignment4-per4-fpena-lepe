@@ -13,7 +13,9 @@ class TTTBoard:
     def __init__(self):
         self.board = ['*'] * 9
     def __str__(self):
-        return "* * *\n* * *\n* * *"
+         return (f"{self.board[0]} {self.board[1]} {self.board[2]}\n"
+                f"{self.board[3]} {self.board[4]} {self.board[5]}\n"
+                f"{self.board[6]} {self.board[7]} {self.board[8]}")
     def make_move(self, player, pos) -> bool:
         if pos>=0 and pos<=8:
             if self.board[pos] == "*":
