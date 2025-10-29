@@ -12,10 +12,12 @@ class TTTBoard:
 
     def __init__(self):
         self.board = ['*'] * 9
+    
     def __str__(self):
          return (f"{self.board[0]} {self.board[1]} {self.board[2]}\n"
                 f"{self.board[3]} {self.board[4]} {self.board[5]}\n"
                 f"{self.board[6]} {self.board[7]} {self.board[8]}")
+    
     def make_move(self, player, pos) -> bool:
         if pos>=0 and pos<=8:
             if self.board[pos] == "*":
@@ -25,6 +27,7 @@ class TTTBoard:
             return False
         print ("Try again you gotta do a number 0-8")
         return False 
+    
     def has_won(self, player):
         wincombo= [(0,1,2),(3,4,5),(6,7,8),
                    (0,3,6),(1,4,7),(2,5,8),
@@ -33,10 +36,12 @@ class TTTBoard:
             if self.board[a]==self.board[b]==self.board[c]==player:
                 return True
         return False
+    
     def game_over(self) -> bool:
         if self.has_won('X') or self.has_won('O') or '*' not in self.board:
             return True
         return False
+    
     def clear(self):
         self.board = ['*'] * 9
 
